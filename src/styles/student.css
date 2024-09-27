@@ -1,6 +1,14 @@
+.student{
+  display:flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  
+}
   .Add{
     margin-top: 15px;
     padding: 1px;
+    margin-left: 20%;
   }
 
   button{
@@ -29,19 +37,23 @@
     font-size: 13px;
     border-spacing: 40px;
     border-collapse: collapse;
+    margin-top: 10%;
+    
     
   }
   .pop{
     margin-top: 40px;
-    border-spacing: 60px;
+    border-spacing: 50px;
     justify-content: space-between;
-    margin-left: -100.50%;
-    border-spacing: 20px;
+    margin-left: -123.50%;
+    position: relative;
     
     
 
+  }
 
-    
+  .table-header thead {
+    margin-left: -55%;
   }
   
   
@@ -52,18 +64,14 @@
 }
 
 .pop  tbody tr td  {
-  border-top: 20px;
+  border-top: 12px;
   border-bottom: 1px solid #dddddd;
   border-spacing: 20px;
-  height:45px;
+  height:40px;
   width: 80px;
  
 }
-.table-header tbody tr {
-  
-  border-spacing: 20px;
-  justify-content: space-between 40px;
-}
+
 
 
 
@@ -78,13 +86,14 @@
   background: #509CDB;;
   display: flex;
   flex-direction: column;
-  height: 460px;
-  width: 300px;
+  height: 430px;
+  width: 260px;
   border-radius: 10px;
    margin-left: 70%;
-  margin-top: -17%;
+  margin-top: 10%;
   color: aliceblue;
-  position: static;
+  position:fixed;
+  
 }
 
 .card0 p{
@@ -110,14 +119,15 @@
 .con{
   display: flex;
   flex-direction: row;
-  margin-left: 39%;
+  margin-left: 33%;
   margin-top: -10%;
+  position: static;
 }
 .Edit button {
   background-color: aliceblue;
   color: #424242;
-  margin-left: 47%;
-  margin-top: 65%;
+  margin-left: -1005%;
+  margin-top: 640%;
   
   width: 100px;
   height: 41px;
@@ -126,15 +136,18 @@
   font-size: 15px;
   justify-content: center;
   margin-bottom: -4.5%;
+  position: relative;
    
 }
 .Delete button {
-  background-color: red;
+  background-color: red ;
   color: aliceblue;
-  margin-left: 79%;
-  margin-top: 65%;
+  margin-left: -995%;
+  margin-top: 640%;
   width: 100px;
   height: 41px;
+  position: relative
+  ;
 }
 
 

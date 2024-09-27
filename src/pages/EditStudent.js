@@ -4,7 +4,7 @@ import '../styles/addstudent.css';
 
 function EditStudent() {
   const { user_id } = useParams();  // Get student ID from route parameters
-  const [student, setStudentData] = useState({
+  const [studentData, setStudentData] = useState({
     first_name: '',
     last_name: '',
     email: '',
@@ -17,6 +17,7 @@ function EditStudent() {
 
   // Fetch student data from the backend using the ID
   useEffect(() => {
+    console.log(user_id);
     fetch(`http://localhost:9000/api/students/${user_id}`, {
       method: 'GET',
       mode: 'cors',
@@ -26,13 +27,13 @@ function EditStudent() {
       },
     })
       .then((response) => response.json())
-      .then((studentData) => {
-        if (studentData) {
+      .then((students) => {
+        if (students) {
           setStudentData({
-            first_name: studentData.first_name,
-            last_name: studentData.last_name,
-            email: studentData.email,
-            date_of_birth: studentData.date_of_birth
+            first_name: students.first_name,
+            last_name: students.last_name,
+            email: students.email,
+            date_of_birth: students.date_of_birth
           });
         }
         setLoading(false);
@@ -63,14 +64,14 @@ function EditStudent() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(student),
+      body: JSON.stringify(studentData),
     })
       .then((response) => response.json())
       .then((result) => {
         if (result.status === 'ok') {
           alert('Student updated successfully');
           // Redirect to student list after update
-          navigate('/students');
+          navigate('/student');
         } else {
           alert('Failed to update student');
         }
@@ -92,7 +93,7 @@ function EditStudent() {
           <input
             type="text"
             name="first_name"
-            value={student.first_name}
+            value={studentData.first_name}
             onChange={handleChange}
             required
           />
@@ -101,7 +102,7 @@ function EditStudent() {
           <input
             type="text"
             name="last_name"
-            value={student.last_name}
+            value={studentData.last_name}
             onChange={handleChange}
             required
           />
@@ -111,7 +112,7 @@ function EditStudent() {
           <input
             type="email"
             name="email"
-            value={student.email}
+            value={studentData.email}
             onChange={handleChange}
             required
           />
@@ -120,7 +121,7 @@ function EditStudent() {
           <input
             type="date"
             name="date_of_birth"
-            value={student.date_of_birth}
+            value={studentData.date_of_birth}
             onChange={handleChange}
             required
           />

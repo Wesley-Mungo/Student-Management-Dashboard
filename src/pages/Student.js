@@ -74,15 +74,16 @@ function Student() {
         
     };
     const handleClick1 = () => {
-      navigate("/editstudent");
+      navigate("/editstudent/15");
       
   };
-  return (
+  return ( 
+    
     <div className='student'>
      <div className='Add'>
         <button className='AddButton' onClick={handleClick} >Add Students </button> 
      </div>
-     <div >
+     
       
        <table className='table-header'>   
         <thead >
@@ -99,7 +100,7 @@ function Student() {
        {student && student.length > 0 ? (
        student.map((student) => (
         <div >
-          {console.log(student)}
+          {console.log(student)} 
         <StudentRow
            id={student.id}
            first_name = {student.first_name}
@@ -118,7 +119,7 @@ function Student() {
  
     </tbody>
     </table>
-    </div>
+    
     
     <div className ='card0'>
     {selectedStudent && (
@@ -155,7 +156,7 @@ function Student() {
         </div>
         </div>
     </div>
-    
+  
 
 
   );
