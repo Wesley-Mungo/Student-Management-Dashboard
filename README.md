@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 # Student-Management-Dashboard
+Build a student management dashboard  with Reactjs where the admin can add students, uptate student , get all students and delete students and connected it to my  Python FastAPI  backend i did on my internship bootcamp 
 =======
 # Getting Started with Create React App
 
