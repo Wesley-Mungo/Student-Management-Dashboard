@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from fastapi import APIRouter
+from fastapi import APIRouter, status, HTTPException
 from fastapi.params import Depends
 
 from app.api.dependencies import get_repo
@@ -8,11 +8,14 @@ from app.data.repo import AbstractRepo
 from app.data.schemas import CreateStudentSchema, UpdateStudentSchema, CreateStudentResponse, GetStudentsResponse, \
     UpdateStudentResponse, GetStudentResponse
 from app.domain import student_service
+from app.data.database import get_db
+from sqlmodel import Session
+
 
 router = APIRouter(prefix="/api")
 
-
-@router.post("/students", response_model=CreateStudentResponse)  # Creation of a student
+ 
+@router.post("/students", response_model=CreateStudentResponse)  # Creation of a user
 def create_student(
     schema: CreateStudentSchema,
     repo: Annotated[AbstractRepo, Depends(get_repo)]
@@ -45,6 +48,7 @@ def update_student(
     schema: UpdateStudentSchema,
     repo: Annotated[AbstractRepo, Depends(get_repo)]
 ):
+    
     student = student_service.update_student(student_id=user_id, repo=repo, data=schema)
     return UpdateStudentResponse(**dict(student))
 

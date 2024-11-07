@@ -26,7 +26,7 @@ const AddStudent = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
- const url =  'http://localhost:9000/api/students' 
+ const url =  'http://localhost:8000/api/students' 
 
 try {
  const response = await fetch(

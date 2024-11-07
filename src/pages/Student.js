@@ -6,12 +6,12 @@ import {useState, useEffect} from 'react';
 
 function Student() {
   const [student, setStudent] = useState([]);
-  const [selectedStudent, SelectedStudent] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
  // delete student from the backend
  const handleDelete =(user_id) => {
 
-  fetch(`http://localhost:9000/api/students/${user_id}`, {
+  fetch(`http://localhost:8000/api/students/${user_id}`, {
 
        method: 'DELETE',
        mode: 'cors',
@@ -43,7 +43,7 @@ function Student() {
 
   // Fetch data from the backend API
   useEffect(() => {
-    fetch('http://localhost:9000/api/students', {
+    fetch('http://localhost:8000/api/students', {
        method: 'GET',
        mode: 'cors',
        credentials: 'same-origin',
@@ -60,7 +60,7 @@ function Student() {
       console.log(results); 
       setStudent(results.students || []);
     if (results.students && results.students.length > 0) {
-      SelectedStudent(results.students[0]);
+      setSelectedStudent(results.students[0]);
       }
   })
   .catch(error => {
@@ -73,8 +73,8 @@ function Student() {
         navigate("/addstudent");
         
     };
-    const handleClick1 = () => {
-      navigate("/editstudent/15");
+    const handleClick1 = (user_id) => {
+      navigate(`/editstudent/${user_id}`);
       
   };
   return ( 
@@ -99,7 +99,7 @@ function Student() {
     
        {student && student.length > 0 ? (
        student.map((student) => (
-        <div >
+        <div onClick={() => setSelectedStudent(student)} >
           {console.log(student)} 
         <StudentRow
            id={student.id}
@@ -149,7 +149,7 @@ function Student() {
 </div>
         <div className='con'>
         <div className='Edit'>
-        <button className='editstudent' onClick={handleClick1} >Edit </button>
+        <button className='editstudent' onClick={() => handleClick1(selectedStudent?.id)} >Edit </button>
         </div>
         <div className='Delete'>
         <button className='deletestudent' onClick={() => handleDelete(selectedStudent?.id)}>Delete </button>

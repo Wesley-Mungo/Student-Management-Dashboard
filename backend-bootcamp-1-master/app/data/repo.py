@@ -48,11 +48,12 @@ class StudentRepo(AbstractRepo):
     def update_student(self, user_id: int, data: UpdateStudentSchema):
         student = self.get_student_by_id(user_id)
         if not student:
-            return None
+           return None
         student.first_name = data.first_name
         student.last_name = data.last_name
         student.email = data.email
         student.date_of_birth = data.date_of_birth
+        
 
         self._session.add(student)
         self._session.commit()
@@ -61,7 +62,7 @@ class StudentRepo(AbstractRepo):
 
     def delete_student(self, user_id: int) -> bool:
         user = self._session.exec(select(Student).where(Student.id == user_id)).one_or_none()
-        if not user:
+        if not user_id:
             return False
         self._session.delete(user)
         self._session.commit()

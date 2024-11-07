@@ -18,7 +18,7 @@ function EditStudent() {
   // Fetch student data from the backend using the ID
   useEffect(() => {
     console.log(user_id);
-    fetch(`http://localhost:9000/api/students/${user_id}`, {
+    fetch(`http://localhost:8000/api/students/${user_id}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'same-origin',
@@ -56,8 +56,8 @@ function EditStudent() {
   // Handle form submission to update student
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch(`http://localhost:9000/api/students/${user_id}`, {
+console.log("user id", user_id)
+    fetch(`http://localhost:8000/api/students/${user_id}`, {
       method: 'PUT',
       mode: 'cors',
       credentials: 'same-origin',

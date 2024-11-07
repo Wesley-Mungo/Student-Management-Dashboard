@@ -3,6 +3,7 @@ from datetime import datetime, date
 from sqlmodel import SQLModel, Field
 
 
+
 class Base(SQLModel):
     id: int | None = Field(default=None, primary_key=True)
     created_at: datetime = Field(default_factory=datetime.now)
@@ -12,5 +13,6 @@ class Base(SQLModel):
 class Student(Base, table=True):
     first_name: str
     last_name: str
-    email: str
+    email: str = Field(default=None, description="EmailAddress and must be unique ")
     date_of_birth: date
+    

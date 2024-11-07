@@ -9,7 +9,7 @@ class CreateStudentSchema(BaseModel):
     last_name: str
     email: str
     date_of_birth: date
-
+    
 
 class UpdateStudentSchema(BaseModel):
     first_name: Optional[str]
